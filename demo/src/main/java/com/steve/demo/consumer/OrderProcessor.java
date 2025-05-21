@@ -69,15 +69,6 @@ public class OrderProcessor {
         try {
             Order order = objectMapper.readValue(orderJson, Order.class);
             log.info("Processing DLQ order: {}", order.getId());
-
-            // Implement retry logic here
-            // For example, you could:
-            // 1. Check retry count
-            // 2. Implement exponential backoff
-            // 3. Send to another queue for manual review
-            // 4. Notify administrators
-
-            // For now, we'll just log it
             log.info("DLQ order needs manual review: {}", order.getId());
         } catch (Exception e) {
             log.error("Failed to process DLQ order", e);
